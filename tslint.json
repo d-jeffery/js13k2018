@@ -3,7 +3,9 @@
     "extends": ["tslint:recommended", "tslint-config-prettier"],
     "jsRules": {},
     "rules": {
-        "no-console": false
+        "interface-name": false,
+        "no-console": false,
+        "no-null-keyword": true
     },
     "rulesDirectory": []
 }
