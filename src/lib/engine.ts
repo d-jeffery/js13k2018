@@ -68,7 +68,7 @@ export default class Engine {
      */
     public setStage(stage: Stage): void {
         this.stage = stage;
-        this.stage.setCtx(this.ctx);
+        this.stage.ctx = this.ctx;
         this.stage.init();
     }
 

@@ -1,4 +1,5 @@
-import Stage from './stage';
+import Stage from '../stage';
+import { Point } from '../utils/math';
 
 /**
  * Actor's constructor options.
@@ -14,7 +15,12 @@ export interface ActorOptions {
  */
 export default abstract class Actor {
     /**
-     * The actors layer
+     * The actor's position.
+     */
+    public pos: Point;
+
+    /**
+     * The actor's layer.
      */
     public layer: number;
 
@@ -26,23 +32,22 @@ export default abstract class Actor {
     /**
      * The stage the actor is currently on.
      */
-    private stage: Stage;
+    public stage: Stage;
+
+    /**
+     * The colour to draw
+     */
+    protected debugColour: string;
 
     /**
      * Actor constructor.
      */
-    protected constructor(options: ActorOptions) {
+    protected constructor(origin: Point, options: ActorOptions) {
+        this.pos = origin;
         this.layer = options.layer ? options.layer : 0;
         this.stage = options.stage ? options.stage : undefined;
+        this.debugColour = options.debugColour ? options.debugColour : '#000000';
         this.remove = false;
-    }
-
-    /**
-     * Set the stage the actor is on.
-     * @param {Stage} stage
-     */
-    public setStage(stage: Stage): void {
-        this.stage = stage;
     }
 
     /**
@@ -59,10 +64,12 @@ export default abstract class Actor {
     /**
      * Render the actor.
      */
-    public abstract render(): void;
+    public render(): void {
+        this.debugDraw();
+    }
 
     /**
      * Draw the debug version of the actor.
      */
-    public abstract debugDraw(): void;
+    protected abstract debugDraw(): void;
 }

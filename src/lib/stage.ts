@@ -1,9 +1,14 @@
-import Actor from './actor';
+import Actor from './actors/actor';
 
 /**
  * The game stage.
  */
 export default class Stage {
+    /**
+     * The 2D canvas context.
+     */
+    public ctx: CanvasRenderingContext2D;
+
     /**
      * Width of the stage.
      */
@@ -13,11 +18,6 @@ export default class Stage {
      * Height of the stage.
      */
     private height: number;
-
-    /**
-     * The 2D canvas context.
-     */
-    private ctx: CanvasRenderingContext2D;
 
     /**
      * Stage if 'finished'.
@@ -41,19 +41,11 @@ export default class Stage {
     }
 
     /**
-     * Set the current rendering context.
-     * @param {CanvasRenderingContext2D} ctx
-     */
-    public setCtx(ctx: CanvasRenderingContext2D): void {
-        this.ctx = ctx;
-    }
-
-    /**
      * Add an actor to the stage and initialise.
      * @param {Actor} actor
      */
     public addActor(actor: Actor): void {
-        actor.setStage(this);
+        actor.stage = this;
         actor.init();
         this.actors.push(actor);
     }

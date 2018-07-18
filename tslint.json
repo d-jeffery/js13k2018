@@ -5,7 +5,8 @@
     "rules": {
         "interface-name": false,
         "no-console": false,
-        "no-null-keyword": true
+        "no-null-keyword": true,
+        "ordered-imports": false
     },
     "rulesDirectory": []
 }
