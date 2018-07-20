@@ -74,6 +74,7 @@ export default class Stage {
      * Render all actors on stage.
      */
     public render(): void {
+        this.ctx.clearRect(0, 0, this.width, this.height);
         for (const actor of this.actors) {
             actor.render();
         }

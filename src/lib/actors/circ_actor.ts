@@ -4,7 +4,7 @@ import { Point } from '../utils/math';
 /**
  * A circle shaped actor.
  */
-export default class CircleActor extends Actor {
+export default abstract class CircleActor extends Actor {
     /**
      * Radius of actor.
      */
@@ -16,23 +16,9 @@ export default class CircleActor extends Actor {
      * @param {number} radius
      * @param {ActorOptions} options
      */
-    constructor(origin: Point, radius: number, options: ActorOptions) {
+    protected constructor(origin: Point, radius: number, options: ActorOptions) {
         super(origin, options);
         this.radius = radius;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public init(): void {
-        // Do nothing.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public update(dt: number): void {
-        // Do nothing
     }
 
     /**
