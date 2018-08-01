@@ -10,19 +10,19 @@ export default class Stage {
     public ctx: CanvasRenderingContext2D;
 
     /**
+     * Stage if 'finished'.
+     */
+    public finished = false;
+
+    /**
      * Width of the stage.
      */
-    private width: number;
+    protected w: number;
 
     /**
      * Height of the stage.
      */
-    private height: number;
-
-    /**
-     * Stage if 'finished'.
-     */
-    private finished = false;
+    protected h: number;
 
     /**
      * Actors on the stage.
@@ -33,8 +33,8 @@ export default class Stage {
      * Stage constructor.
      */
     public constructor(width: number, height: number) {
-        this.width = width;
-        this.height = height;
+        this.w = width;
+        this.h = height;
         this.ctx = undefined;
         this.finished = false;
         this.actors = [];
@@ -74,7 +74,6 @@ export default class Stage {
      * Render all actors on stage.
      */
     public render(): void {
-        this.ctx.clearRect(0, 0, this.width, this.height);
         for (const actor of this.actors) {
             actor.render();
         }

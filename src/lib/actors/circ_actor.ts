@@ -8,7 +8,7 @@ export default abstract class CircleActor extends Actor {
     /**
      * Radius of actor.
      */
-    public radius: number;
+    public r: number;
 
     /**
      * Constructor.
@@ -18,7 +18,7 @@ export default abstract class CircleActor extends Actor {
      */
     protected constructor(origin: Point, radius: number, options: ActorOptions) {
         super(origin, options);
-        this.radius = radius;
+        this.r = radius;
     }
 
     /**
@@ -28,7 +28,7 @@ export default abstract class CircleActor extends Actor {
         const ctx = this.stage.ctx;
         ctx.beginPath();
         ctx.fillStyle = this.debugColour;
-        ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI);
+        ctx.arc(this.pos.x, this.pos.y, this.r, 0, 2 * Math.PI);
         ctx.fill();
     }
 }

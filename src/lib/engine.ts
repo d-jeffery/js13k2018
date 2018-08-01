@@ -7,12 +7,12 @@ export default class Engine {
     /**
      * Width of the game canvas.
      */
-    public width: number;
+    public w: number;
 
     /**
      * Height of the game canvas.
      */
-    public height: number;
+    public h: number;
 
     /**
      * Flag if we are running.
@@ -51,12 +51,12 @@ export default class Engine {
      * @param {HTMLElement} canvas
      */
     public constructor(width: number, height: number, canvas: HTMLElement) {
-        this.width = width;
-        this.height = height;
+        this.w = width;
+        this.h = height;
 
         this.canvas = canvas as HTMLCanvasElement;
-        this.canvas.width = this.width;
-        this.canvas.height = this.height;
+        this.canvas.width = this.w;
+        this.canvas.height = this.h;
 
         this.ctx = this.canvas.getContext('2d');
         this.stage = undefined;
@@ -114,8 +114,12 @@ export default class Engine {
      * @param {number} dt
      */
     private update(dt: number): void {
-        console.log(dt);
+        // Run transition function if currentStage is marked as 'finished'
+        if (this.stage.finished && this.transitionFun !== undefined) {
+            this.transitionFun();
+        }
 
+        // Update stage
         if (this.stage !== undefined) {
             this.stage.update(dt);
         }
@@ -125,6 +129,12 @@ export default class Engine {
      * Render function.
      */
     private render(): void {
+        // Clear reset canvas
+        this.ctx.save();
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.restore();
+
+        // Render stage
         if (this.stage !== undefined) {
             this.stage.render();
         }

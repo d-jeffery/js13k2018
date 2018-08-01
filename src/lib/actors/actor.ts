@@ -35,7 +35,7 @@ export default abstract class Actor {
     public stage: Stage;
 
     /**
-     * The colour to draw
+     * The colour to draw.
      */
     protected debugColour: string;
 

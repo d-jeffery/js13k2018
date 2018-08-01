@@ -8,12 +8,12 @@ export default abstract class RectangleActor extends Actor {
     /**
      * Actor width.
      */
-    public width: number;
+    public w: number;
 
     /**
      * Actor height.
      */
-    public height: number;
+    public h: number;
 
     /**
      * Constructor.
@@ -29,8 +29,8 @@ export default abstract class RectangleActor extends Actor {
         options: ActorOptions = {}
     ) {
         super(origin, options);
-        this.width = width;
-        this.height = height;
+        this.w = width;
+        this.h = height;
     }
 
     /**
@@ -39,6 +39,6 @@ export default abstract class RectangleActor extends Actor {
     protected drawDebug() {
         const ctx = this.stage.ctx;
         ctx.strokeStyle = this.debugColour;
-        ctx.strokeRect(this.pos.x, this.pos.y, this.width, this.height);
+        ctx.strokeRect(this.pos.x, this.pos.y, this.w, this.h);
     }
 }
