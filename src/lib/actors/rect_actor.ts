@@ -36,7 +36,7 @@ export default abstract class RectangleActor extends Actor {
     /**
      * @inheritDoc
      */
-    protected drawDebug() {
+    protected debugDraw(): void {
         const ctx = this.stage.ctx;
         ctx.strokeStyle = this.debugColour;
         ctx.strokeRect(this.pos.x, this.pos.y, this.w, this.h);

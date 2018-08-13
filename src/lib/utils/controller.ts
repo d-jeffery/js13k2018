@@ -6,7 +6,7 @@ export default class Controller {
     /**
      * Key map.
      */
-    public static keys: { [key: string]: string };
+    public static keys: Record<string, string>;
 
     /**
      * The singleton instance.
@@ -16,7 +16,7 @@ export default class Controller {
     /**
      * Table of key presses.
      */
-    private pressed: { [key: string]: boolean };
+    private readonly pressed: Record<string, boolean>;
 
     /**
      * Constructor.

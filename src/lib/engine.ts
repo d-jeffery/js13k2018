@@ -25,6 +25,11 @@ export default class Engine {
     public currentTime: number;
 
     /**
+     * Current stage.
+     */
+    public stage: Stage;
+
+    /**
      * The game canvas.
      */
     private canvas: HTMLCanvasElement;
@@ -33,11 +38,6 @@ export default class Engine {
      * The 2D canvas context.
      */
     private ctx: CanvasRenderingContext2D;
-
-    /**
-     * Current stage.
-     */
-    private stage: Stage;
 
     /**
      * Stage transition function.
